@@ -1,4 +1,4 @@
-# Sensor Fusion Self-Driving Car Course
+# SFND-Lidar-Object-Detection
 
 <img src="media/ObstacleDetectionFPS.gif" width="700" height="400" />
 
@@ -62,4 +62,3 @@ NOTE: very old version
 [PCL Source Github](https://github.com/PointCloudLibrary/pcl)
 
 [PCL Mac Compilation Docs](http://www.pointclouds.org/documentation/tutorials/compiling_pcl_macosx.php)
-# SFND-Lidar-Object-Detection
