@@ -260,22 +260,24 @@ std::unordered_set<int>  ProcessPointClouds<PointT>::RansacPlane(typename pcl::P
 
 		for(int index = 0; index < cloud->size(); index++)
 		{
+			if(inliersTemp.count(index)>0)
+				continue;
 			PointT current_p;
 			double distance = 0.0;
 
 			current_p = cloud->points[index];
 
 			// Measure distance between every point and fitted line
-			distance = abs((A * current_p.x) + (B * current_p.y) + (C * current_p.z) + D)/sqrt((A*A) + (B*B) + (C*C));
+			distance = fabs((A * current_p.x) + (B * current_p.y) + (C * current_p.z) + D)/sqrt((A*A) + (B*B) + (C*C));
 
 			// If distance is smaller than threshold count it as inlier
-			if(distance < distanceTol)
+			if(distance <= distanceTol)
 			{
 				inliersTemp.insert(index);
 			}
 		}
 
-		if( (inliersResult.size() == 0) || ( inliersTemp.size() >  inliersResult.size()) )
+		if( inliersTemp.size() >  inliersResult.size())
 		{
 			inliersResult = inliersTemp;
 		}
